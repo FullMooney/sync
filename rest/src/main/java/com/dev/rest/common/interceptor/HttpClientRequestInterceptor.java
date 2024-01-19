@@ -20,7 +20,7 @@ public class HttpClientRequestInterceptor implements ClientHttpRequestIntercepto
 	    throws IOException {
 	logReq(request.getURI(), body);
 	ClientHttpResponse response = execution.execute(request, body);
-	logReq(request.getURI(), response);
+	logRes(request.getURI(), response);
 	return response;
     }
 
@@ -31,7 +31,7 @@ public class HttpClientRequestInterceptor implements ClientHttpRequestIntercepto
 	}
     }
 
-    private void logReq(URI requestUri, ClientHttpResponse response) throws IOException {
+    private void logRes(URI requestUri, ClientHttpResponse response) throws IOException {
 	if (log.isInfoEnabled()) {
 	    log.info("- URI : {}", requestUri);
 	    log.info("- Response statuscode : {} ", response.getStatusCode());
