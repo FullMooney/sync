@@ -52,4 +52,10 @@ public class RestTemplateTestController {
 	return selfRestClient.post("/api/rest/return-post-value", event, EventVO.class);
     }
 
+    @PostMapping("/call-post-unexist")
+    public ResponseEntity<EventVO> callPostUnexist(@RequestBody EventVO event) {
+
+	return selfRestClient.post("/api/rest/unexist", event, EventVO.class);
+    }
+
 }

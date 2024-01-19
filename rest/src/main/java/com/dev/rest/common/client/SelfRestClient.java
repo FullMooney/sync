@@ -19,16 +19,19 @@ public class SelfRestClient {
 	this.selfRestTemplate = selfRestTemplate;
     }
 
+    @SuppressWarnings("unchecked")
     public <T> T get(String uri, Object obj, Class<?> clazz) {
 	HttpEntity<?> httpEntity = makeHttpHeader(HttpMethod.GET, obj);
 	return (T) selfRestTemplate.exchange(uri, HttpMethod.GET, httpEntity, clazz);
     }
 
+    @SuppressWarnings("unchecked")
     public <T> T post(String uri, Object obj, Class<?> clazz) {
 	HttpEntity<?> httpEntity = makeHttpHeader(HttpMethod.POST, obj);
 	return (T) selfRestTemplate.exchange(uri, HttpMethod.POST, httpEntity, clazz);
     }
 
+    @SuppressWarnings("deprecation")
     private HttpHeaders makeHeader() {
 	HttpHeaders httpHeaders = new HttpHeaders();
 	httpHeaders.setContentType(MediaType.APPLICATION_JSON_UTF8);
